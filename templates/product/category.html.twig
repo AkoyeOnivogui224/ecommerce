@@ -32,8 +32,8 @@
 						<span style="color:teal">{{ p.category.name }}</span>
 						<p>{{ p.shortDescription }}</p>
 
-						<a href="{{ path('product_show', {'category_slug': p.category.slug, 'slug': p.slug}) }}" class="btn btn-primary btn-sm">Détail</a>
-						<a href="#" class="btn btn-success btn-sm">Ajouter</a>
+						<a href="{{ path ('product_show', {'category_slug': p.category.slug, 'slug': p.slug}) }}" class="btn btn-primary btn-sm">Détail</a>
+						<a href="{{ path ('product_create') }}" class="btn btn-success btn-sm">Ajouter</a>
 
 					</div>
 				</div>
