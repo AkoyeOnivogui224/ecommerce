@@ -18,12 +18,14 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\File\Exception\AccessDeniedException;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Validator\Constraints\Collection;
 use Symfony\Component\Validator\Constraints\GreaterThan as ConstraintsGreaterThan;
@@ -37,7 +39,7 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/{slug}", name="product_category")
+     * @Route("/{slug}", name="product_category", priority=-1)
      */
     public function category($slug, CategoryRepository $categoryRepository)
     {
@@ -76,8 +78,13 @@ class ProductController extends AbstractController
     /**
      * @Route("/admin/product/{id}/edit", name="product_edit")
      */
-    public function edit($id, ProductRepository $productRepository, Request $request, EntityManagerInterface $em, ValidatorInterface $validator)
+    public function edit($id, ProductRepository $productRepository, Request $request, EntityManagerInterface $em, ValidatorInterface $validator, Security $security)
     {
+
+        $user = $security->getUser();
+        if (!in_array("ROLE_ADMIN", $user->getRoles())) {
+            throw new AccessDeniedException("Vous n'avez pas le droit d'accéder à cette ressource");
+        }
 
         $product = $productRepository->find($id);
 

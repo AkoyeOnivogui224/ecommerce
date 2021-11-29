@@ -15,21 +15,23 @@
 					</li>
 				{% endfor %}
 			</ul>
-			<form class="d-flex">
-				<ul class="navbar-nav">
+
+			<ul class="navbar-nav">
+				{% if app.user %}
+					<li class="nav-item">
+						<a href="{{path ('security_logout')}}" class="btn btn-danger">Deconnexion</a>
+					</li>
+				{% else %}
 					<li class="nav-item">
 						<a href="#" class="nav-link">Inscription</a>
 					</li>
 
 					<li class="nav-item">
-						<a href="#" class="btn btn-success">Connexion</a>
+						<a href="{{path ('security_login')}}" class="btn btn-success">Connexion</a>
 					</li>
+				{% endif %}
+			</ul>
 
-					<li class="nav-item">
-						<a href="#" class="btn btn-danger">Deconnexion</a>
-					</li>
-				</ul>
-			</form>
 		</div>
 	</div>
 </nav>
