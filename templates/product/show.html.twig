@@ -38,7 +38,7 @@
 		<div class="col">
 			<span style="color:teal">({{ product.name }})</span>
 			<p>{{product.shortDescription }}</p>
-			<a href="#" class="btn btn-success btn-lg">
+			<a href="{{ path ('cart_add', {'id': product.id}) }}" class="btn btn-success btn-lg">
 				<i class="fa fa-shoping-cart"></i>Ajouter au panier
 			</a>
 
