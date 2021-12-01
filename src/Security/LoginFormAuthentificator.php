@@ -23,20 +23,21 @@ class LoginFormAuthentificator extends AbstractGuardAuthenticator
     }
     public function supports(Request $request)
     {
-        return $request->attributes->get('_route') === 'security_login' && $request->isMethod('Post'); //Requipère la route et retourne true si la methode utiliser est Post.
+        //Requipère la route et retourne true si la methode utiliser est Post.
+        return $request->attributes->get('_route') === 'security_login' && $request->isMethod('Post');
     }
 
     public function getCredentials(Request $request)
     {
-        return $request->request->get('login'); // retourne un tableau avec 3 informations
+        //Retourne un tableau avec 3 informations
+        return $request->request->get('login');
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
         try {
-
-            return $userProvider->loadUserByUsername($credentials['email']); //userProvider va aller chercher dans notre base de si on a un utilisateur qui correspond à l'email qu'on a rentrer.
-
+            //userProvider va aller chercher dans notre base de si on a un utilisateur qui correspond à l'email qu'on a rentrer.
+            return $userProvider->loadUserByUsername($credentials['email']);
         } catch (UsernameNotFoundException $e) {
 
             throw new AuthenticationException("Cette adresse Email n'est pac connue");

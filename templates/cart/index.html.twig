@@ -45,13 +45,31 @@
 			</tbody>
 			<tfoot>
 				<tr>
-					<td colspan="3">Total:
-					</td>
-					<td colspan="2">{{ total }}
-						&euro;</td>
+					<th colspan="3">Total:
+					</th>
+					<th colspan="2">{{ total }}
+						&euro;</th>
 				</tr>
 			</tfoot>
 		</table>
+		<br>
+
+		{% if app.user %}
+			<h2>Confirmez votre commande en remplissant le formulaire</h2>
+
+			{{ form_start(confirmationForm, { 'action': path ('purchase_confirm') }) }}
+
+			{{ form_widget(confirmationForm)}}
+			<br>
+			<button class="btn btn-success" type="submit">Je confirme !</button>
+
+			{{ form_end(confirmationForm)}}
+		{% else %}
+			<h2>Vous devrez être connecté pour confirmer cette commande</h2>
+			<a href="{{ path ("security_login")}}" class="btn btn-success">Connexion</a>
+			ou
+			<a href="#">Créez un compte</a>
+		{% endif %}
 	{% else %}
 		<h2>Le panier est vide !</h2>
 	{% endif %}

@@ -20,13 +20,14 @@
 				<li class="nav-item">
 					<a href="{{ path('cart_show') }}" class="nav-link">
 						<i class="fas fa-shopping-cart" style="color: orange"></i>
-						<strong style="color: orange">Panier
-																												({{ cartService.total }}
+						<strong style="color: orange">Panier({{ cartService.total }}
 							&euro;)</strong>
-
 					</a>
 				</li>
 				{% if app.user %}
+					<li class="nav-item">
+						<a href="{{ path("purchase_index")}}" class="nav-link">Mes commandes</a>
+					</li>
 					<li class="nav-item">
 						<a href="{{path ('security_logout')}}" class="btn btn-danger">Deconnexion</a>
 					</li>
