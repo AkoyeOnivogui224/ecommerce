@@ -39,3 +39,24 @@ services:
         arguments:
             $secreteKey: "%env(STRIPE_SECRETE_KEY)%"
             $publicKey: "%env(STRIPE_PUBLIC_KEY)%"
+
+# # création d'un evement PrenomListener
+#     App\EventDispatcher\PrenomListener:
+#     # Nous vourlons donner des information de tag (objet en JSON)
+#         tags: [
+#                 {
+#                 name: kernel.event_listener, 
+#                 event: kernel.request, 
+#                 method: addPrenomToAttributes,
+#                 },             
+#                 {
+#                 name: kernel.event_listener,
+#                 event: kernel.controller,
+#                 method: test1
+#                 },
+#                 {
+#                 name: kernel.event_listener,
+#                 event: kernel.response,
+#                 method: test2
+#                 }
+#             ]
