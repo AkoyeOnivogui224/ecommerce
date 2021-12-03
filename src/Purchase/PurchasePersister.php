@@ -26,7 +26,7 @@ class PurchasePersister
     {
 
         $purchase->setUser($this->security->getUser())
-            ->setPurchasedAt(new DateTime())
+            // ->setPurchasedAt(new DateTime())
             ->setTotal($this->cartService->getTotal());
 
         $this->em->persist($purchase);
