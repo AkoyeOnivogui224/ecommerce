@@ -28,8 +28,8 @@
 
 	<h1>Produit:
 		{{ product.name }}
-		({{ product.price / 100}}
-		&euro;)</h1>
+		({{ product.price | amount }}
+		)</h1>
 
 	<div class="row">
 		<div class="col-4">

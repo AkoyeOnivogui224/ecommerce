@@ -86,7 +86,7 @@ class CartService
             }
 
 
-            $total += $product->getPrice() * $qty / 100;
+            $total += $product->getPrice() * $qty;
         }
         return $total;
     }

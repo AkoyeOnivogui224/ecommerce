@@ -32,14 +32,14 @@
 								<li>{{item.quantity}}
 									x
 									{{ item.productName}}
-									<strong style="color:orange">({{ item.total / 100 }}
-										&euro;)</strong>
+									<strong style="color:orange">({{ item.total | amount }}
+										)</strong>
 								</li>
 							{% endfor %}
 						</ul>
 					</td>
-					<td>{{ p.total / 100 }}
-						&euro;</td>
+					<td>{{ p.total | amount }}
+					</td>
 				</tr>
 
 			{% endfor %}
