@@ -41,32 +41,32 @@ services:
             $publicKey: "%env(STRIPE_PUBLIC_KEY)%"
 
 # création d'un evement PrenomListener
-    App\Doctrine\Listener\ProductSlugListener:
-    # Nous vourlons donner des information de tag (objet en JSON)
-        tags: [
-                {
-                name: doctrine.orm.entity_listener, 
-                event: prePersist,
-                entity: App\Entity\Product
-                },             
-                # {
-                # name: kernel.event_listener,
-                # event: kernel.controller,
-                # method: test1
-                # },
-                # {
-                # name: kernel.event_listener,
-                # event: kernel.response,
-                # method: test2
-                # }
-            ]
+    # App\Doctrine\Listener\ProductSlugListener:
+    # # Nous vourlons donner des information de tag (objet en JSON)
+    #     tags: [
+    #             {
+    #             name: doctrine.orm.entity_listener, 
+    #             event: prePersist,
+    #             entity: App\Entity\Product
+    #             },             
+    #             # {
+    #             # name: kernel.event_listener,
+    #             # event: kernel.controller,
+    #             # method: test1
+    #             # },
+    #             # {
+    #             # name: kernel.event_listener,
+    #             # event: kernel.response,
+    #             # method: test2
+    #             # }
+    #         ]
 
-    App\Doctrine\Listener\CategorySlugListener:
-        tags: [
-                {
-                name: doctrine.orm.entity_listener, 
-                event: prePersist,
-                entity: App\Entity\Category
-                },             
-            ]
+    # App\Doctrine\Listener\CategorySlugListener:
+    #     tags: [
+    #             {
+    #             name: doctrine.orm.entity_listener, 
+    #             event: prePersist,
+    #             entity: App\Entity\Category
+    #             },             
+    #         ]
 

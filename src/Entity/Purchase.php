@@ -74,8 +74,9 @@ class Purchase
     {
         $this->purchaseItems = new ArrayCollection();
     }
+
     /**
-     * @ORM\Prepersist
+     * @ORM\PrePersist
      */
     public function prePersist()
     {
